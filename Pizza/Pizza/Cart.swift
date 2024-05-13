@@ -7,12 +7,20 @@
 
 import SwiftUI
 
+
 struct Cart: View {
+    var person: Person
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        if  person.basketIsEmpty == true {
+            ContentUnavailableView("The basket is empty", systemImage: "cart.fill", description: Text("Add the product to the car"))
+        } else {
+            
+        }
+        
     }
 }
 
 #Preview {
-    Cart()
+    Cart(person: Person(name: "Matvey", lastName: "Glukhov", address: Adress(city: "Ekaterinburg", street: "8 marta", house: "181/2", apartment: "187"), telephone: 89995693476, email: "gmv96@mail.ru"))
 }

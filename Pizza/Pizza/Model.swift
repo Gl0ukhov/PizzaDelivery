@@ -7,9 +7,7 @@
 
 import Foundation
 import SwiftUI
-import SwiftData
 
-@Model
 class Person {
     var name: String
     var lastName: String
@@ -17,6 +15,7 @@ class Person {
     var telephone: Int
     var email: String
     
+    var userIsLogged = false 
     
     var basket: [Basket] = []
     var basketIsEmpty: Bool {

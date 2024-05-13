@@ -8,11 +8,45 @@
 import SwiftUI
 
 struct Profile: View {
+    
+    var person: Person
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        if person.userIsLogged {
+            
+        } else {
+            NavigationStack {
+                VStack {
+                    Spacer()
+                    Text("Log in to your profile")
+                        .font(.system(.title, design: .default, weight: .bold))
+                    Text("To save points and receive personal discounts")
+                        .font(.subheadline)
+                    Button("Enter a phone number") {
+                        
+                    }
+                    .padding()
+                    .background(.yellow)
+                    .foregroundStyle(.white)
+                    .font(.callout)
+                    .clipShape(.capsule)
+                    
+                    Spacer()
+                    NavigationLink("Legal documents") {
+                        
+                    }
+                    .foregroundStyle(.gray)
+                    
+                }
+                
+                .navigationTitle("Profile")
+                .navigationBarTitleDisplayMode(.inline)
+            }
+            
+        }
     }
 }
 
 #Preview {
-    Profile()
+    Profile(person: Person(name: "Matvey", lastName: "Glukhov", address: Adress(city: "Ekaterinburg", street: "8 marta", house: "181/2", apartment: "187"), telephone: 89995693476, email: "gmv96@mail.ru"))
 }
