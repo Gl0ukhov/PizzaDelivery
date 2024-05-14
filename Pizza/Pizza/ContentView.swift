@@ -15,7 +15,7 @@ struct ContentView: View {
                     Label("Menu", systemImage: "menucard")
                 }
             
-            Text("Profile")
+            Profile(person: Person(name: "Matvey", lastName: "Glukhov", address: Adress(city: "Ekaterinburg", street: "8 marta", house: "181/2", apartment: "187"), telephone: 89995693476, email: "gmv96@mail.ru"))
                 .tabItem {
                     Label("Profile", systemImage: "person.crop.circle")
                 }
