@@ -10,6 +10,7 @@ import SwiftUI
 struct Profile: View {
     
     var person: Person
+    @State private var buttonNumber = false
     
     var body: some View {
         if person.userIsLogged {
@@ -36,7 +37,7 @@ struct Profile: View {
                     .padding(3)
                     
                         Button("Enter a phone number") {
-                            
+                            buttonNumber.toggle()
                         }
                         .frame(width: 220, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                         .background(Color(#colorLiteral(red: 0.9014285207, green: 0.08878894895, blue: 0.5165427327, alpha: 1)))
@@ -52,7 +53,7 @@ struct Profile: View {
                     
                     Group {
                         NavigationLink("Legal documents") {
-                            LegalDocimets()
+                            LegalDocuments()
                         }
                         .foregroundStyle(Color(#colorLiteral(red: 0.5741485357, green: 0.5741624236, blue: 0.574154973, alpha: 1)))
                         .font(.footnote)
@@ -64,7 +65,9 @@ struct Profile: View {
                     }
                     .padding(3)
                 }
-                
+                .sheet(isPresented: $buttonNumber, content: {
+                    Registration()
+                })
                 .navigationTitle("Profile")
                 .navigationBarTitleDisplayMode(.inline)
             }
