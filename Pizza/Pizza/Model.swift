@@ -57,3 +57,16 @@ class Adress {
         self.apartment = apartment
     }
 }
+
+
+class PhoneNumbersFormat {
+    var image: String
+    var formatNumber: String
+    var name: String
+    
+    init(image: String, formatNumber: String, name: String) {
+        self.image = image
+        self.formatNumber = formatNumber
+        self.name = name
+    }
+}

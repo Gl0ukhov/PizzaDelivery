@@ -19,6 +19,8 @@ struct Registration: View {
         }
     }
     
+    @State private var phoneNumberFormat = false
+    
     var body: some View {
         VStack {
             Group {
@@ -46,10 +48,11 @@ struct Registration: View {
                                 Image(uiImage: UIImage(systemName: "arrow.down")!)
                             }
                             .foregroundStyle(.black)
+                            .padding(.leading, 30)
                         })
                         TextField("Phone number", text: $phoneNumber)
+                            .keyboardType(.numberPad)
                     }
-                    .padding(0)
                 }
             }
             
@@ -65,7 +68,7 @@ struct Registration: View {
             .foregroundStyle(Color(#colorLiteral(red: 0.7725487947, green: 0.772549212, blue: 0.7811570764, alpha: 1)))
             
             Button("Continue") {
-                
+                phoneNumberFormat = true
             }
             .frame(width: 350, height: 50, alignment: .center)
             .background(disableadContinue == false ? Color(#colorLiteral(red: 0.9014285207, green: 0.08878894895, blue: 0.5165427327, alpha: 1)) : Color(#colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1)))
@@ -76,7 +79,11 @@ struct Registration: View {
             .padding(25)
             .disabled(disableadContinue)
         }
+        .sheet(isPresented: $phoneNumberFormat, content: {
+            /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Content@*/Text("Sheet Content")/*@END_MENU_TOKEN@*/
+        })
     }
+        
 }
 
 #Preview {
