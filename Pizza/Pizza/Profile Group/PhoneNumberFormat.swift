@@ -32,7 +32,9 @@ struct PhoneNumberFormat: View {
                             Text(phone.name)
                                 .padding(.leading, 20)
                         }
-                        
+                        if person.formatNumber == phone.formatNumber {
+                            
+                        }
                         
                     }
                     .padding(.vertical, 15)
