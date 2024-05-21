@@ -10,6 +10,8 @@ import iPhoneNumberField
 import PhoneNumberKit
 
 struct Registration: View {
+    var person: Person
+    
     @State private var phoneNumber: String = ""
     private var disableadContinue: Bool {
         if phoneNumber.count != 10 {
@@ -41,14 +43,14 @@ struct Registration: View {
                 HStack {
                     Group {
                         Button(action: {
-                            
+                            phoneNumberFormat = true
                         }, label: {
                             HStack {
                                 Text("+7")
                                 Image(uiImage: UIImage(systemName: "arrow.down")!)
                             }
                             .foregroundStyle(.black)
-                            .padding(.leading, 30)
+                            .padding(.leading, 35)
                         })
                         TextField("Phone number", text: $phoneNumber)
                             .keyboardType(.numberPad)
@@ -68,7 +70,6 @@ struct Registration: View {
             .foregroundStyle(Color(#colorLiteral(red: 0.7725487947, green: 0.772549212, blue: 0.7811570764, alpha: 1)))
             
             Button("Continue") {
-                phoneNumberFormat = true
             }
             .frame(width: 350, height: 50, alignment: .center)
             .background(disableadContinue == false ? Color(#colorLiteral(red: 0.9014285207, green: 0.08878894895, blue: 0.5165427327, alpha: 1)) : Color(#colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1)))
@@ -80,12 +81,12 @@ struct Registration: View {
             .disabled(disableadContinue)
         }
         .sheet(isPresented: $phoneNumberFormat, content: {
-            /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Content@*/Text("Sheet Content")/*@END_MENU_TOKEN@*/
+            PhoneNumberFormat(person: person)
         })
     }
         
 }
 
 #Preview {
-    Registration()
+    Registration(person: Person())
 }

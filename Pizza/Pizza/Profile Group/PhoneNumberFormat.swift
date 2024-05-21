@@ -9,22 +9,44 @@ import SwiftUI
 
 struct PhoneNumberFormat: View {
     
+    let allPhone: [PhoneNumbersFormat] = Bundle.main.decode("PhoneNumbers.json")
+    var person: Person
+    
     var body: some View {
-        List {
-            HStack {
-                Text("🇧🇾") 
+        NavigationStack {
+            
+            List(allPhone) { phone in
+                Button(action: {
+                    print("ok")
+                }, label: {
+                    HStack {
+                        Text(phone.image)
+                        Text(phone.formatNumber)
+                        if phone.formatNumber.count == 2 {
+                            Text(phone.name)
+                                .padding(.leading, 40)
+                        } else if phone.formatNumber.count == 3 {
+                            Text(phone.name)
+                                .padding(.leading, 30)
+                        } else {
+                            Text(phone.name)
+                                .padding(.leading, 20)
+                        }
+                        
+                        
+                    }
+                    .padding(.vertical, 15)
+                })
             }
+            .listStyle(.plain)
+            .navigationTitle("Phone country code")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
     
-    func decode() {
-        let data = Bundle.main.url(forResource: "PhoneNumbers", withExtension: "json")
-        if let phone = try? JSONDecoder().decode(PhoneNumbersFormat.self, from: data) {
-            
-        }
-    }
+    
 }
 
 #Preview {
-    PhoneNumberFormat()
+    PhoneNumberFormat(person: Person())
 }

@@ -22,5 +22,5 @@ struct Cart: View {
 }
 
 #Preview {
-    Cart(person: Person(name: "Matvey", lastName: "Glukhov", address: Adress(city: "Ekaterinburg", street: "8 marta", house: "181/2", apartment: "187"), telephone: 89995693476, email: "gmv96@mail.ru"))
+    Cart(person: Person())
 }

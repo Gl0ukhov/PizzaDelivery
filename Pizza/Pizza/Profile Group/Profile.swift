@@ -66,7 +66,7 @@ struct Profile: View {
                     .padding(3)
                 }
                 .sheet(isPresented: $buttonNumber, content: {
-                    Registration()
+                    Registration(person: person)
                 })
                 .navigationTitle("Profile")
                 .navigationBarTitleDisplayMode(.inline)
@@ -77,5 +77,5 @@ struct Profile: View {
 }
 
 #Preview {
-    Profile(person: Person(name: "Matvey", lastName: "Glukhov", address: Adress(city: "Ekaterinburg", street: "8 marta", house: "181/2", apartment: "187"), telephone: 89995693476, email: "gmv96@mail.ru"))
+    Profile(person: Person())
 }
