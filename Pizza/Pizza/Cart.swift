@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct Cart: View {
-    var person: Person
+    var person: Persons
     
     var body: some View {
         if  person.basketIsEmpty == true {
@@ -22,5 +22,5 @@ struct Cart: View {
 }
 
 #Preview {
-    Cart(person: Person())
+    Cart(person: Persons())
 }

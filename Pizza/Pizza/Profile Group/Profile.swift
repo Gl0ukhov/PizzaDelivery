@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Profile: View {
     
-    var person: Person
+    let person: Persons
     @State private var buttonNumber = false
     
     var body: some View {
@@ -77,5 +77,5 @@ struct Profile: View {
 }
 
 #Preview {
-    Profile(person: Person())
+    Profile(person: Persons())
 }

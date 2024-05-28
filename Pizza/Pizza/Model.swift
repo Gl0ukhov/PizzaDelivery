@@ -8,13 +8,14 @@
 import Foundation
 import SwiftUI
 
-class Person {
+class Persons {
     var name: String?
     var lastName: String?
     var address: Adress?
     var telephone: Int?
-    var formatNumber: String?
+    var formatNumber = PhoneNumbersFormat(id: 1, image: "🇷🇺", formatNumber: "+7", name: "Россия")
     var email: String?
+    
     
     var userIsLogged = false 
     
@@ -27,13 +28,20 @@ class Person {
         }
     }
     
-//    init(name: String, lastName: String, address: Adress, telephone: Int, email: String) {
-//        self.name = name
-//        self.lastName = lastName
-//        self.address = address
-//        self.telephone = telephone
-//        self.email = email
-//    }
+}
+
+class PhoneNumbersFormat: Codable, Identifiable {
+    var id: Int
+    var image: String
+    var formatNumber: String
+    var name: String
+    
+    init(id: Int, image: String, formatNumber: String, name: String) {
+        self.id = id
+        self.image = image
+        self.formatNumber = formatNumber
+        self.name = name
+    }
 }
 
 class Basket {
@@ -60,16 +68,4 @@ class Adress {
 }
 
 
-class PhoneNumbersFormat: Codable, Identifiable {
-    var id: Int
-    var image: String
-    var formatNumber: String
-    var name: String
-    
-    init(id: Int, image: String, formatNumber: String, name: String, selected: Bool) {
-        self.id = id
-        self.image = image
-        self.formatNumber = formatNumber
-        self.name = name
-    }
-}
+

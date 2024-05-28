@@ -8,16 +8,17 @@
 import SwiftUI
 
 struct PhoneNumberFormat: View {
-    
+    @Environment (\.dismiss) var dismiss
     let allPhone: [PhoneNumbersFormat] = Bundle.main.decode("PhoneNumbers.json")
-    var person: Person
+    let person: Persons
     
     var body: some View {
         NavigationStack {
             
             List(allPhone) { phone in
                 Button(action: {
-                    print("ok")
+                    person.formatNumber = phone
+                    dismiss()
                 }, label: {
                     HStack {
                         Text(phone.image)
@@ -32,8 +33,9 @@ struct PhoneNumberFormat: View {
                             Text(phone.name)
                                 .padding(.leading, 20)
                         }
-                        if person.formatNumber == phone.formatNumber {
-                            
+                        
+                        if person.formatNumber.id == phone.id {
+                            Image(systemName: "checkmark")
                         }
                         
                     }
@@ -43,6 +45,13 @@ struct PhoneNumberFormat: View {
             .listStyle(.plain)
             .navigationTitle("Phone country code")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Back", systemImage: "xmark") {
+                        dismiss()
+                    }
+                }
+            }
         }
     }
     
@@ -50,5 +59,5 @@ struct PhoneNumberFormat: View {
 }
 
 #Preview {
-    PhoneNumberFormat(person: Person())
+    PhoneNumberFormat(person: Persons())
 }

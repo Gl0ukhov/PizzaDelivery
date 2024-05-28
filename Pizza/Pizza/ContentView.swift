@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    let person = Persons()
+    
     var body: some View {
         TabView {
             Text("Menu")
@@ -15,7 +17,7 @@ struct ContentView: View {
                     Label("Menu", systemImage: "menucard")
                 }
             
-            Profile(person: Person())
+            Profile(person: person)
                 .tabItem {
                     Label("Profile", systemImage: "person.crop.circle")
                 }
@@ -25,7 +27,7 @@ struct ContentView: View {
                     Label("Contact", systemImage: "person.crop.circle")
                 }
             
-            Cart(person: Person())
+            Cart(person: person)
                 .tabItem {
                     Label("Cart", systemImage: "cart")
                 }
