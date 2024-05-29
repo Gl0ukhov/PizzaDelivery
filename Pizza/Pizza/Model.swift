@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+@Observable
 class Persons {
     var name: String?
     var lastName: String?

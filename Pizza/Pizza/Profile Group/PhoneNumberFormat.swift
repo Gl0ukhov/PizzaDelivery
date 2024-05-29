@@ -14,7 +14,6 @@ struct PhoneNumberFormat: View {
     
     var body: some View {
         NavigationStack {
-            
             List(allPhone) { phone in
                 Button(action: {
                     person.formatNumber = phone
@@ -34,9 +33,9 @@ struct PhoneNumberFormat: View {
                                 .padding(.leading, 20)
                         }
                         
-                        if person.formatNumber.id == phone.id {
-                            Image(systemName: "checkmark")
-                        }
+                        //                        if person.formatNumber.id == phone.id {
+                        //                            Image(systemName: "checkmark")
+                        //                        }
                         
                     }
                     .padding(.vertical, 15)
